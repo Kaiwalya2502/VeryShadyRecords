@@ -1,0 +1,90 @@
+create database recordlabel;
+use recordlabel;
+
+create table artists(
+artist_id int not null,
+artistName varchar(50),
+genre varchar(50),
+phone int,
+numberOfAlbums int,
+constraint primary key(artist_id)
+);
+
+create table album(
+album_id int not null,
+album_name varchar(100),
+release_date date,
+artist_name varchar(50),
+number_of_songs int,
+status varchar(30),
+constraint primary key(album_id)
+);
+
+create table sales(
+sale_id int not null,
+album_id int,
+album_name varchar(100),
+quantity int,
+amount int,
+type varchar(20)
+constraint primary key(sale_id),
+constraint foreign key(album_id) references album(album_id)
+);
+
+create table song(
+song_id int not null,
+song_name varchar(50),
+album varchar(100),
+song_genre varchar(50),
+length int
+constraint primary key(song_id)
+);
+
+create table user(
+user_id int not null,
+name varchar(20),
+mobile_no int,
+address varchar(100),
+password varchar(100),
+constraint primary key(user_id)
+);
+
+DELIMITER $$
+ CREATE TRIGGER albumRank BEFORE INSERT ON `sales`
+ FOR EACH ROW BEGIN
+ IF (NEW.quantity > 20) THEN
+ SET NEW.type = “Platinum Selling”;
+ END IF;
+ END$$
+
+
+create procedure getAlbumCount(IN artist varchar(50), OUT album_count INT)
+begin
+select count(*) INTO album_count from album where artist_name = artist;
+end$$
+
+create procedure updateAlbumCount(IN value INT,IN artist varchar(50))
+begin
+update artists set numberOfAlbums = value where artistName = artist;
+end$$
+
+create procedure getAlbumSales(IN album varchar(50),OUT esales Int)
+begin 
+25
+select sum(quantity) INTO esales from sales where album_name = album group by album_name;
+end$$
+
+create procedure updateAlbumStatus(IN value INT,IN album varchar(50))
+begin
+if value > 25 then
+update album set status = "Platinum Selling" where album_name = album;
+end if;
+end$$
+
+create procedure updationOfDB(IN artist varchar(50),IN album varchar(50))
+begin
+call getAlbumCount(artist,@count);
+call updateAlbumCount(@count,artist);
+call getAlbumSales(album,@esales);
+call updateAlbumStatus(@esales,album);
+end$$
