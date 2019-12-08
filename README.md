@@ -1,9 +1,21 @@
 VeryShadyRecords
+
+
+
+The Aim of this project is to make a Desktop Application which
+displays various details with respect to a Record Label. We tried to
+cover the basic facilities of a Record Label Management System. The
+details include artists details, albums details, songs details sales and
+user that use the system to sell the records. The project has been
+developed using NetBeans for the design and MySQL for maintaining
+the database.
 Record Label Management System using Netbeans and MySQL
 
 
 
 Environment and Requirement
+
+
 Programming Language: JAVA with Swings
 MySQL Conncector: MySQL JConnector 5.1.40(JDBC Driver) https://dev.mysql.com/downloads/connector/j/
 IDE: NetBeans 8.1
@@ -11,6 +23,8 @@ MySQL Version: 5.5.4
 
 
 Instructions
+
+
 	1.Clone the Project 
 
 	2.Import Java Project in NetBeans
