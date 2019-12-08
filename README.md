@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 VeryShadyRecords
 
 
@@ -46,4 +46,4 @@ Instructions
 =======
 # VeryShadyRecords
  Record Label Management System
->>>>>>> parent of 9788e33... Update README.md
+
