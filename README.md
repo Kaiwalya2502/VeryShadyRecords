@@ -24,7 +24,7 @@ the database.
 
 ### Prerequisites and Requirements
 
-Programming Language: JAVA with Swings
+Programming Language: JAVA with Swing
 
 
 MySQL Conncector: MySQL JConnector 5.1.40(JDBC Driver) https://dev.mysql.com/downloads/connector/j/
